@@ -16,7 +16,17 @@
 set -e
 [ -n "${KOPSENV_DEBUG}" ] && set -x
 
+source "${KOPSENV_ROOT}/libexec/helpers"
+
 export KOPSENV_VERSION="$(kopsenv-version-name)"
+
+if [ -z "${KOPSENV_VERSION}" ]; then
+  warn_and_continue "Trying to install the version of .kops-version"
+
+  "${KOPSENV_ROOT}/libexec/kopsenv-install"
+  export KOPSENV_VERSION="$(kopsenv-version-name)"
+fi
+
 KOPS_BIN_PATH="${KOPSENV_CONF_DIR}/versions/${KOPSENV_VERSION}/kops"
 export PATH="${KOPS_BIN_PATH}:${PATH}"
 "${KOPS_BIN_PATH}" "${@}"
