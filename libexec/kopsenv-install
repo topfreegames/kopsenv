@@ -37,7 +37,7 @@ if [ -f "${dst_path}/kops" ]; then
   exit 0
 fi
 
-version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+version_url="https://github.com/spotinst/kubernetes-kops/releases/download/${version}"
 exe_name="kops-$(kops_platform)"
 (( "$?" )) && exit $?
 
