@@ -37,11 +37,48 @@ if [ -f "${dst_path}/kops" ]; then
   exit 0
 fi
 
-version_url="https://github.com/spotinst/kubernetes-kops/releases/download/${version}"
+case $version in 
+  1.16.0)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-d0675687a"
+    ;;
+
+  1.15.2)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-6880fb33f"
+    ;;
+
+  1.15.1)
+    error_and_die "Version $version not supported" && \
+    exit 1
+    ;;
+
+  1.14.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.1-7a204649f"
+    ;;
+
+  1.14.0)
+    error_and_die "Version $version not supported" && \
+    exit 1
+    ;;
+
+  1.13.0)
+    warn_and_continue "Will use normal kops version" && \
+    version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+    ;;
+
+  *)
+    info "Will use the normal kops" && \
+    version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+    ;;
+
+esac
+
 exe_name="kops-$(kops_platform)"
 (( "$?" )) && exit $?
 
-info "Installing Kops v${version}"
+info "Installing Kops ${version}"
 
 # Create a local temporary directory for downloads
 download_tmp="$(mktemp -d kopsenv_download.XXXXXX)" || error_and_die "Unable to create temporary download directory in $(pwd)"
@@ -55,6 +92,6 @@ mkdir -p "${dst_path}" || error_and_die "Failed to make directory ${dst_path}"
 cp "${download_tmp}/${exe_name}" "${dst_path}/kops" || error_and_die "Copy of ${exe_name} from ${download_tmp} to ${dst_path} failed"
 chmod a+x "${dst_path}/kops" || error_and_die "Unable to set execute on ${dst_path}/kops"
 
-info "Installation of kops v${version} successful"
+info "Installation of kops ${version} successful"
 kopsenv-use "$version"
 
