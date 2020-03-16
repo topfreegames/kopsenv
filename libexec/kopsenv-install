@@ -40,17 +40,22 @@ fi
 case $version in 
   1.16.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-d0675687a"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-f1c7b0bf2"
     ;;
 
   1.15.2)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-6880fb33f"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-ed71f1776"
     ;;
 
   1.15.1)
-    error_and_die "Version $version not supported" && \
-    exit 1
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-6693b7b39"
+    ;;
+
+  1.15.0)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-0850929cd"
     ;;
 
   1.14.1)
@@ -59,13 +64,23 @@ case $version in
     ;;
 
   1.14.0)
-    error_and_die "Version $version not supported" && \
-    exit 1
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.0-7218af5f3"
+    ;;
+
+  1.13.2)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.2-8d8cd75b2"
+    ;;
+
+  1.13.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-bba8ae2b1"
     ;;
 
   1.13.0)
-    warn_and_continue "Will use normal kops version" && \
-    version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.0-f2e8b3179"
     ;;
 
   *)
