@@ -2,7 +2,7 @@
 
 [ -n "${KOPSENV_DEBUG}" ] && set -x
 
-echo "Usage: kopsenv <command> [<options>]
+echo "Usage: kopsenv <command> [<options>] (SPOTINST MODIFIED)
 
 Commands:
    install       Install a specific version of Kops

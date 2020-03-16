@@ -1,5 +1,7 @@
 # kopsenv
 
+**This is currently a modified version of kopsenv to support using the spotinst kops for versions greater than 1.13.0.** (1.13.1, 1.13.2, 1.14.1, ....)  
+
 [Kops](https://github.com/kubernetes/kops) version manager inspired by [tfenv](https://github.com/Zordrak/tfenv).
 
 ## Support
