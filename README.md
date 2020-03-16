@@ -19,7 +19,7 @@ Currently kopsenv supports the following OSes, on x86-64 bit archtecture only:
 1. Check out kopsenv into any path (here is `${HOME}/.kopsenv`)
 
   ```sh
-  $ git clone https://github.com/kilna/kopsenv.git ~/.kopsenv
+  $ git clone https://github.com/topfreegames/kopsenv.git ~/.kopsenv
   ```
 
 2. Add `~/.kopsenv/bin` to your `$PATH` any way you like
