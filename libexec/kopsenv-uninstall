@@ -9,7 +9,7 @@ declare version_requested version regex
 
 if [ -z "${1}" ]; then
   version_file="$(kopsenv-version-file)"
-  if [ "${version_file}" != "${KOPSENV_ROOT}/version" ];then
+  if [ "${version_file}" != "${KOPSENV_CONF_DIR}/version" ];then
     version_requested="$(cat ${version_file} || true)"
   fi
 else
@@ -31,10 +31,10 @@ fi
 version="$(kopsenv-list | sed -E 's/^(\*| )? //g; s/ \(set by .+\)$//' | grep -e "${regex}" | head -n 1)"
 [ -n "${version}" ] || error_and_die "No versions matching '${1}' found in local"
 
-dst_path="${KOPSENV_ROOT}/versions/${version}"
+dst_path="${KOPSENV_CONF_DIR}/versions/${version}"
 if [ -f "${dst_path}/kops" ]; then 
-  info "Uninstall Kops v${version}"
+  info "Uninstall Kops ${version}"
   rm -r "${dst_path}"
-  info "\033[0;32mKops v${version} is successfully uninstalled\033[0;39m"
+  info "\033[0;32mKops ${version} is successfully uninstalled\033[0;39m"
 fi
 

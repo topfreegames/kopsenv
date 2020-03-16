@@ -9,7 +9,7 @@ declare version_requested version regex
 
 if [ -z "${1}" ]; then
   version_file="$(kopsenv-version-file)"
-  if [ "${version_file}" != "${KOPSENV_ROOT}/version" ]; then
+  if [ "${version_file}" != "${KOPSENV_CONF_DIR}/version" ]; then
     version_requested="$(cat ${version_file} || true)"
   fi
 else
@@ -31,17 +31,64 @@ fi
 version="$(kopsenv-list-remote | grep -e "${regex}" | head -n 1)"
 [ -n "${version}" ] || error_and_die "No versions matching '${1}' found in remote"
 
-dst_path="${KOPSENV_ROOT}/versions/${version}"
+dst_path="${KOPSENV_CONF_DIR}/versions/${version}"
 if [ -f "${dst_path}/kops" ]; then
   echo "Kops v${version} is already installed"
   exit 0
 fi
 
-version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+case $version in 
+  1.16.0)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-f1c7b0bf2"
+    ;;
+
+  1.15.2)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-ed71f1776"
+    ;;
+
+  1.15.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-6693b7b39"
+    ;;
+
+  1.15.0)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-0850929cd"
+    ;;
+
+  1.14.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.1-7a204649f"
+    ;;
+
+  1.14.0)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.0-7218af5f3"
+    ;;
+
+  1.13.2)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.2-8d8cd75b2"
+    ;;
+
+  1.13.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-bba8ae2b1"
+    ;;
+
+  *)
+    info "Will use the normal kops" && \
+    version_url="https://github.com/kubernetes/kops/releases/download/${version}"
+    ;;
+
+esac
+
 exe_name="kops-$(kops_platform)"
 (( "$?" )) && exit $?
 
-info "Installing Kops v${version}"
+info "Installing Kops ${version}"
 
 # Create a local temporary directory for downloads
 download_tmp="$(mktemp -d kopsenv_download.XXXXXX)" || error_and_die "Unable to create temporary download directory in $(pwd)"
@@ -55,6 +102,6 @@ mkdir -p "${dst_path}" || error_and_die "Failed to make directory ${dst_path}"
 cp "${download_tmp}/${exe_name}" "${dst_path}/kops" || error_and_die "Copy of ${exe_name} from ${download_tmp} to ${dst_path} failed"
 chmod a+x "${dst_path}/kops" || error_and_die "Unable to set execute on ${dst_path}/kops"
 
-info "Installation of kops v${version} successful"
+info "Installation of kops ${version} successful"
 kopsenv-use "$version"
 

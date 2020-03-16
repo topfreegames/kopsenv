@@ -1,5 +1,7 @@
 # kopsenv
 
+**This is currently a modified version of kopsenv to support using the spotinst kops for versions greater than 1.13.0.** (1.13.1, 1.13.2, 1.14.1, ....)  
+
 [Kops](https://github.com/kubernetes/kops) version manager inspired by [tfenv](https://github.com/Zordrak/tfenv).
 
 ## Support
@@ -119,6 +121,15 @@ $ kopsenv list-remote
 1.7.1
 1.7.0
 ...
+```
+
+## Configuration directory
+
+If you would like to configure a different directory than the `KOPSENV_ROOT` to install and manager your Kops versions,
+you can specify a `KOPSENV_CONF_DIR` environment variable.
+
+```sh
+export KOPSENV_CONF_DIR="$HOME/.kopsversions/
 ```
 
 ## .kops-version
