@@ -78,11 +78,6 @@ case $version in
     version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-bba8ae2b1"
     ;;
 
-  1.13.0)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.0-f2e8b3179"
-    ;;
-
   *)
     info "Will use the normal kops" && \
     version_url="https://github.com/kubernetes/kops/releases/download/${version}"
