@@ -40,42 +40,42 @@ fi
 case $version in 
   1.16.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-f1c7b0bf2"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-9688ee528"
     ;;
 
   1.15.2)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-ed71f1776"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-faed31441"
     ;;
 
   1.15.1)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-6693b7b39"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-c3f01412f"
     ;;
 
   1.15.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-0850929cd"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-9ad20aefb"
     ;;
 
   1.14.1)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.1-7a204649f"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.1-3e87bcb10"
     ;;
 
   1.14.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.0-7218af5f3"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.0-749a996fe"
     ;;
 
   1.13.2)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.2-8d8cd75b2"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.2-dd0f33c4d"
     ;;
 
   1.13.1)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-bba8ae2b1"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-478e1d644"
     ;;
 
   *)
