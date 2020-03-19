@@ -12,7 +12,7 @@
 set -e
 [ -n "${KOPSENV_DEBUG}" ] && set -x
 
-version="0.7.0 (SPOTINST MODIFIED)"
+version="0.7.0"
 git_revision=""
 
 if cd "${BASH_SOURCE%/*}" 2>/dev/null && git remote -v 2>/dev/null | grep -q kopsenv; then
@@ -20,4 +20,4 @@ if cd "${BASH_SOURCE%/*}" 2>/dev/null && git remote -v 2>/dev/null | grep -q kop
   git_revision="${git_revision#v}"
 fi
 
-echo "kopsenv ${git_revision:-$version}"
+echo "kopsenv ${git_revision:-$version} (SPOTINST MODIFIED)"
