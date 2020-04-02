@@ -40,42 +40,22 @@ fi
 case $version in 
   1.16.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-661dcd555"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-84c9a54b4"
     ;;
 
   1.15.2)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-7cdea2829"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-519eaa64c"
     ;;
 
   1.15.1)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-ca011648e"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-6c8e6908c"
     ;;
 
   1.15.0)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-214b62aec"
-    ;;
-
-  1.14.1)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.1-026ce0a5e"
-    ;;
-
-  1.14.0)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.14.0-279f8a3fd"
-    ;;
-
-  1.13.2)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.2-48cc563a2"
-    ;;
-
-  1.13.1)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.13.1-8c76b87cc"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-b41e6e0da"
     ;;
 
   *)
