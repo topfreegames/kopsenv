@@ -31,10 +31,18 @@ fi
 version="$(kopsenv-list | sed -E 's/^(\*| )? //g; s/ \(set by .+\)$//' | grep -e "${regex}" | head -n 1)"
 [ -n "${version}" ] || error_and_die "No versions matching '${1}' found in local"
 
+prefixed="$(echo ${version} | grep -E '^v')"
+if [[ -n "$prefixed" ]]; then
+  link_path="${KOPSENV_CONF_DIR}/versions/${version:1}"
+else
+  link_path="${KOPSENV_CONF_DIR}/versions/v${version}"
+fi
+
 dst_path="${KOPSENV_CONF_DIR}/versions/${version}"
 if [ -f "${dst_path}/kops" ]; then 
   info "Uninstall Kops ${version}"
   rm -r "${dst_path}"
+  rm -rf "${link_path}"
   info "\033[0;32mKops ${version} is successfully uninstalled\033[0;39m"
 fi
 

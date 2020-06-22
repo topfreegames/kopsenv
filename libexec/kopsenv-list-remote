@@ -21,6 +21,5 @@ json=$(curlw -s -L https://api.github.com/repos/kubernetes/kops/releases)
 echo "$json" \
   | grep 'download/[v]\?[0-9\.]\{1,\}/kops-'$platform'"' \
   | sed 's/^.*download\///; s/\/.*$//' \
-  | sed 's/^[v]//' \
   | sort -t. -r -k1,1 -k2,2 -k3,3 -k4,4 \
   | uniq
