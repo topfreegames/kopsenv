@@ -93,6 +93,6 @@ else
   ln -s ${dst_path} ${link_path}
 fi
 
-info "Installation of kops ${1} successful"
-kopsenv-use "${1}"
+info "Installation of kops ${version_requested} successful"
+kopsenv-use "${version_requested}"
 
