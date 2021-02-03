@@ -40,6 +40,10 @@ if [ -f "${dst_path}/kops" ]; then
 fi
 
 case $version_requested in 
+  1.17.1)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.1-7acee7466"
+    ;;
   1.16.0)
     info "Will use a spotinst kops" && \
     version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-84c9a54b4"
