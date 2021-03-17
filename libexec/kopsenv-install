@@ -39,14 +39,18 @@ if [ -f "${dst_path}/kops" ]; then
   exit 0
 fi
 
-case $version_requested in 
+case $version_requested in
   1.18.2)
     info "Will use a spotinst kops" && \
     version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.18.2-6837c742a1"
     ;;
+  1.17.2)
+    info "Will use a spotinst kops" && \
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.2-e4f69d94ce"
+    ;;
   1.17.1)
     info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.1-7acee7466"
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.1-8996e8f0f7"
     ;;
   1.16.0)
     info "Will use a spotinst kops" && \
