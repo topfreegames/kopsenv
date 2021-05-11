@@ -19,7 +19,7 @@ platform="$(kops_platform)"
 json=$(curlw -s -L https://api.github.com/repos/kubernetes/kops/releases\?per_page=100)
 (( "$?" )) && exit $?
 http_status=$(echo "$json" | grep HTTP_RESPONSE_CODE |  awk '{print $2}')
-if [[ http_status != 2* ]]
+if [[ "${http_status}" != 2* ]]
 then
    echo "Github API response error:
 $json"
@@ -28,7 +28,7 @@ fi
 
 json2=$(curlw -s -L https://api.github.com/repos/spotinst/kubernetes-kops/releases\?per_page=100)
 http_status=$(echo "$json2" | grep HTTP_RESPONSE_CODE |  awk '{print $2}')
-if [[ http_status != 2* ]] 
+if [[ "${http_status}" != 2* ]] 
 then 
    echo "Github API response error:
 ${json2}"
