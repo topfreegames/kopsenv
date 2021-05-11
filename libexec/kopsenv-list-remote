@@ -17,9 +17,17 @@ platform="$(kops_platform)"
 # only curl + POSIX tools
 json=$(curlw -s -L https://api.github.com/repos/kubernetes/kops/releases\?per_page=100)
 (( "$?" )) && exit $?
-
-echo "$json" \
+json2=$(curlw -s -L https://api.github.com/repos/spotinst/kubernetes-kops/releases\?per_page=100)
+(( "$?" )) && exit $?
+output="$(echo "${json}" \
   | grep 'download/[v]\?[0-9\.]\{1,\}/kops-'$platform'"' \
-  | sed 's/^.*download\///; s/\/.*$//' \
+  | sed 's/^.*download\///; s/\/.*$//')"
+
+output="${output}
+$(echo "${json2}" \
+  | grep 'download/[v]\?[0-9\.].*/kops-'$platform'"' \
+  | sed 's/^.*download\///; s/\/.*$/-spotinst/')"
+
+echo "$output" \
   | sort -t. -r -k1,1 -k2,2 -k3,3 -k4,4 \
   | uniq
