@@ -22,7 +22,7 @@ function curlw () {
     TLS_OPT=""
   fi
 
-  curl ${TLS_OPT} "$@"
+  curl -w "HTTP_RESPONSE_CODE: %{http_code} \n" ${TLS_OPT} "$@"
 }
 
 kops_platform() {

@@ -39,45 +39,13 @@ if [ -f "${dst_path}/kops" ]; then
   exit 0
 fi
 
-case $version_requested in
-  1.18.2)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.18.2-6837c742a1"
-    ;;
-  1.17.2)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.2-e4f69d94ce"
-    ;;
-  1.17.1)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.17.1-8996e8f0f7"
-    ;;
-  1.16.0)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.16.0-84c9a54b4"
-    ;;
 
-  1.15.2)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.2-519eaa64c"
-    ;;
-
-  1.15.1)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.1-6c8e6908c"
-    ;;
-
-  1.15.0)
-    info "Will use a spotinst kops" && \
-    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/v1.15.0-b41e6e0da"
-    ;;
-
-  *)
-    info "Will use the normal kops" && \
+if [[ $version_requested == *-spotinst ]]
+then
+    version_url="https://github.com/spotinst/kubernetes-kops/releases/download/"${version%"-spotinst"}
+else
     version_url="https://github.com/kubernetes/kops/releases/download/${version}"
-    ;;
-
-esac
+fi
 
 exe_name="kops-$(kops_platform)"
 (( "$?" )) && exit $?

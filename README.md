@@ -1,6 +1,6 @@
 # kopsenv
 
-**This is currently a modified version of kopsenv to support using the spotinst kops for versions greater than 1.13.0.** (1.13.1, 1.13.2, 1.14.1, ....)  
+**This is currently a modified version of kopsenv to support using either the vanilla or spotinst kops versions
 
 [Kops](https://github.com/kubernetes/kops) version manager inspired by [tfenv](https://github.com/Zordrak/tfenv).
 
@@ -56,6 +56,7 @@ Install a specific version of Kops. Available options for version:
 
 ```sh
 $ kopsenv install 1.10.0
+$ kopsenv install v1.18.2-f37e7a33d0-spotinst
 $ kopsenv install latest
 $ kopsenv install latest:^1.9
 $ kopsenv install
@@ -76,6 +77,7 @@ Switch a version to use
 
 ```sh
 $ kopsenv use 1.10.0
+$ kopsenv use v1.18.2-f37e7a33d0-spotinst
 $ kopsenv use latest
 $ kopsenv use latest:^1.9
 ```
@@ -89,6 +91,7 @@ Uninstall a specific version of Kops
 
 ```sh
 $ kopsenv uninstall 1.10.0
+$ kopsenv uninstall v1.18.2-f37e7a33d0-spotinst
 $ kopsenv uninstall latest
 $ kopsenv uninstall latest:^1.9
 ```
